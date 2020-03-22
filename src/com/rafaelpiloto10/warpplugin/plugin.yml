@@ -1,0 +1,8 @@
+name: WarpPlugin
+version: 1.0.0
+main: com.rafaelpiloto10.warpplugin
+description: plugin for custom warps
+
+commands:
+  warp:
+    description: warp to location
