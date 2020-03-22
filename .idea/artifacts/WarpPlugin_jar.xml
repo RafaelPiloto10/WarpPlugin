@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="WarpPlugin:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/WarpPlugin_jar</output-path>
+    <root id="archive" name="WarpPlugin.jar">
+      <element id="module-output" name="WarpPlugin" />
+      <element id="extracted-dir" path="$USER_HOME$/Desktop/spigot-1.15.2.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="WarpPlugin:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="15838f6d-5d70-4ff6-8051-fd89579a3901" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/WarpPlugin_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/rafaelpiloto10/warpplugin/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/rafaelpiloto10/warpplugin/plugin.yml" afterDir="false" />
     </list>
@@ -31,9 +37,10 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -53,14 +60,18 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="327" y="256" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1584896735075" />
+    <state x="252" y="330" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1584909744525">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="252" y="330" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1584909744525" />
     <state x="376" y="294" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1584899905574">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="376" y="294" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1584899905574" />
-    <state x="2" y="121" key="SettingsEditor" timestamp="1584896353537">
+    <state x="279" y="260" key="SettingsEditor" timestamp="1584910514643">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="2" y="121" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1584896353537" />
+    <state x="279" y="260" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1584910514643" />
     <state x="304" y="175" width="667" height="729" key="find.popup" timestamp="1584897983859">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
