@@ -44,20 +44,25 @@ public class WarpCommand implements CommandExecutor {
                         // /warp list
                         String[] world_warps = warpManager.getWarps("world");
                         String[] player_warps = warpManager.getWarps(offlinePlayer);
-                        String listed_warps = "";
-                        for (String warp : world_warps) {
-                            listed_warps += warp + ", ";
+
+                        if (world_warps != null && player_warps != null && (world_warps.length > 0 || player_warps.length > 0)) {
+                            String listed_warps = "";
+                            for (String warp : world_warps) {
+                                listed_warps += warp + ", ";
+                            }
+                            for (String warp : player_warps) {
+                                listed_warps += warp + ", ";
+                            }
+                            player.sendMessage(Utils.chat("&7Warps: &f" + listed_warps.trim().substring(0, listed_warps.length() - 1)));
+                        } else {
+                            player.sendMessage(Utils.chat("&cThere are no current warps to list!"));
                         }
-                        for (String warp : player_warps) {
-                            listed_warps += warp + ", ";
-                        }
-                        player.sendMessage(Utils.chat("&7Warps: &f" + listed_warps.trim().substring(0, listed_warps.length() - 1)));
 
                     } else if (strings[0].equalsIgnoreCase("help")) {
                         // /warp help
                         String help = Utils.chat("&6Warp Command Help\n\n");
                         String help_warp = Utils.chat("/warp <name> &e- Warp to a location\n");
-                        String help_warp_set = Utils.chat("&6/warp set <name> &e- Set current location as a warp with custom name\n");
+                        String help_warp_set = Utils.chat("&6/warp <set/set:world> <name> &e- Set current location as a warp with custom name\n");
                         String help_warp_remove = Utils.chat("&6/warp <remove:rm> <name> &e- Remove the warp location\n");
                         String help_warp_list = Utils.chat("&6/warp list &e- List the allowed warps\n");
                         String help_warp_help = Utils.chat("&6/warp help &e- Get help with the warp commands");
@@ -70,8 +75,13 @@ public class WarpCommand implements CommandExecutor {
                                 warpManager.getWarpLocation("world", strings[0]) : warpManager.getWarpLocation(offlinePlayer, strings[0]);
                         if (warpLocation != null) {
                             if (warpLocation.getWorld() == player.getWorld()) {
-                                player.sendMessage(Utils.chat("&aTeleporting to " + strings[0]));
-                                player.teleport(warpLocation);
+                                if (player.getLevel() >= 1) {
+                                    player.sendMessage(Utils.chat("&aTeleporting to " + strings[0] + "! XP Level charged!"));
+                                    player.teleport(warpLocation);
+                                    player.setLevel(player.getLevel() - 1);
+                                } else {
+                                    player.sendMessage(Utils.chat("&cOne XP level is required to warp!"));
+                                }
                             } else {
                                 player.sendMessage(Utils.chat("&cInterdimensional travel is not allowed!"));
                             }
@@ -82,28 +92,41 @@ public class WarpCommand implements CommandExecutor {
                 } else if (strings.length == 2) {
                     if (strings[0].equalsIgnoreCase("set")) {
                         // /warp set location_name
-                        // TODO: Make sure player cannot set warp to already taken commands
                         for (String world_warps : warpManager.getWarps("world")) {
                             if (world_warps.equalsIgnoreCase(strings[1])) {
                                 player.sendMessage(Utils.chat("&cWarp name already exists"));
                                 return false;
                             }
-                            warpManager.setWarp(offlinePlayer, strings[1], player.getLocation());
-                            player.sendMessage("&aSuccessfully set " + strings[1] + " warp!");
                         }
+                        for (String cmd : new String[]{"help", "list", "set", "rm", "remove"}) {
+                            if (cmd.equalsIgnoreCase(strings[1])) {
+                                player.sendMessage(Utils.chat("&cCannot set warp name - Illegal name"));
+                                return false;
+                            }
+                        }
+                        if (warpManager.getWarps(offlinePlayer).length > 1) {
+                            player.sendMessage(Utils.chat("&cOnly one custom warp is allowed for your rank"));
+                            return false;
+                        }
+
+                        warpManager.setWarp(offlinePlayer, strings[1], player.getLocation());
+                        player.sendMessage("&aSuccessfully set " + strings[1] + " warp!");
+
                     } else if (strings[0].equalsIgnoreCase("set:world")) {
+                        // /warp set:world location_name
                         if (player.hasPermission("warpplugin.set_world")) {
                             warpManager.setWarp("world", strings[1], player.getLocation());
                             player.sendMessage(Utils.chat("&aSuccessfully set " + strings[1] + " world warp!"));
+                            Bukkit.broadcastMessage(Utils.chat("&f[&aWarp Announcement&f] &6New world warp set: &a" + strings[1]));
                         } else
                             player.sendMessage(Utils.chat("&cYou do not have permissions to run this command!"));
 
                     } else if (strings[0].equalsIgnoreCase("remove") || strings[0].equalsIgnoreCase("rm")) {
-                        if(warpManager.removeWarp(offlinePlayer, strings[1])){
-                            player.sendMessage(Utils.chat("&aSuccessfuly removed warp " + strings[1]));
+                        if (warpManager.removeWarp(offlinePlayer, strings[1])) {
+                            player.sendMessage(Utils.chat("&aSuccessfully removed warp " + strings[1]));
                             return false;
-                        } else if(player.hasPermission("warpplugin.set_world") && warpManager.removeWarp("world", strings[0])){
-                            player.sendMessage(Utils.chat("&aSuccessfuly removed warp " + strings[1]));
+                        } else if (player.hasPermission("warpplugin.set_world") && warpManager.removeWarp("world", strings[1])) {
+                            player.sendMessage(Utils.chat("&aSuccessfully removed warp " + strings[1]));
                             return false;
                         } else {
                             player.sendMessage(Utils.chat("&cCould not remove warp " + strings[1]));

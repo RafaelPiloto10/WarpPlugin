@@ -1,7 +1,7 @@
 name: WarpPlugin
-version: 1.0.0
+version: 1.0.1
 main: com.rafaelpiloto10.warpplugin.Main
-description: plugin for custom warps
+description: Plugin that allows custom warps
 author: Rafael Piloto
 website: https://github.com/RafaelPiloto10/WarpPlugin/
 
