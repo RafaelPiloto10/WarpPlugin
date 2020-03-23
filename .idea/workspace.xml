@@ -8,7 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="15838f6d-5d70-4ff6-8051-fd89579a3901" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/rafaelpiloto10/warpplugin/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/rafaelpiloto10/warpplugin/managers/WarpManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/rafaelpiloto10/warpplugin/managers/WarpManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +39,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -103,10 +103,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1234" height="297" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1584913125921" />
-    <state x="279" y="260" key="SettingsEditor" timestamp="1584910514643">
+    <state x="279" y="260" key="SettingsEditor" timestamp="1584918493525">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="279" y="260" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1584910514643" />
+    <state x="279" y="260" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1584918493525" />
     <state x="304" y="175" width="667" height="729" key="find.popup" timestamp="1584897983859">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

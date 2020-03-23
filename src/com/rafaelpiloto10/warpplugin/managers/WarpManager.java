@@ -4,6 +4,7 @@ import com.rafaelpiloto10.warpplugin.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.World;
 
 import java.io.*;
 import java.util.AbstractMap;
@@ -59,30 +60,32 @@ public class WarpManager {
             for (String key : warps.keySet()) {
                 warps.put(key, warps.get(key));
             }
+
+            if(warps == null){
+                warps = new HashMap<String, HashMap<String, Location>>();
+                warps.put("world", new HashMap<String, Location>());
+            }
         }
     }
 
     public void setWarp(OfflinePlayer player, String name, Location warp) {
-        HashMap<String, Location> playerSavedWarps = warps.get(player.getUniqueId().toString());
-        playerSavedWarps.put(name, warp);
-        warps.put(player.getUniqueId().toString(), playerSavedWarps);
+        setWarp(player.getUniqueId().toString(), name, warp);
     }
 
     public void setWarp(String branch, String name, Location warp) {
         HashMap<String, Location> playerSavedWarps = warps.get(branch);
+
+        if(playerSavedWarps == null){
+            warps.put(branch, new HashMap<String, Location>());
+            playerSavedWarps = warps.get(branch);
+        }
+
         playerSavedWarps.put(name, warp);
         warps.put(branch, playerSavedWarps);
     }
 
     public boolean removeWarp(OfflinePlayer player, String name) {
-        HashMap<String, Location> playerSavedWarps = warps.get(player.getUniqueId().toString());
-        if (playerSavedWarps != null && playerSavedWarps.get(name) != null) {
-            playerSavedWarps.remove(name);
-            warps.put(player.getUniqueId().toString(), playerSavedWarps);
-            return true;
-        } else {
-            return false;
-        }
+        return removeWarp(player.getUniqueId().toString(), name);
     }
 
     public boolean removeWarp(String branch, String name) {
@@ -97,7 +100,7 @@ public class WarpManager {
     }
 
     public String[] getWarps(OfflinePlayer p){
-        return (String[]) warps.get(p.getUniqueId().toString()).keySet().toArray();
+        return getWarps(p.getUniqueId().toString());
     }
 
     public String[] getWarps(String branch){
@@ -105,7 +108,7 @@ public class WarpManager {
     }
 
     public Location getWarpLocation(OfflinePlayer p, String name){
-        return warps.get(p.getUniqueId().toString()).get(name);
+        return getWarpLocation(p.getUniqueId().toString(), name);
     }
 
     public Location getWarpLocation(String branch, String name){
