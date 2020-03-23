@@ -8,6 +8,7 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
 
 import java.io.*;
+import java.nio.file.Path;
 import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.UUID;
@@ -26,7 +27,7 @@ public class WarpManager {
     }
 
     public void saveWarpFile() throws IOException {
-        File file = new File("WarpData/warps.dat");
+        File file = getWarpFile();
         ObjectOutputStream output = new ObjectOutputStream(new GZIPOutputStream(new FileOutputStream(file)));
 
         try {
@@ -43,7 +44,7 @@ public class WarpManager {
     }
 
     public void loadWarpFile() throws IOException, ClassNotFoundException {
-        File file = new File("WarpData/warps.dat");
+        File file = getWarpFile();
 
         if (file != null) {
             ObjectInputStream input = new ObjectInputStream(new GZIPInputStream(new FileInputStream(file)));
@@ -66,6 +67,13 @@ public class WarpManager {
                 warps.put("world", new HashMap<String, Location>());
             }
         }
+    }
+
+    public File getWarpFile(){
+        File dirs = new File("WarpData/");
+        dirs.mkdirs();
+        File warp_file = new File(dirs, "warps.dat");
+        return warp_file;
     }
 
     public void setWarp(OfflinePlayer player, String name, Location warp) {
