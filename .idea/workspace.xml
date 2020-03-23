@@ -8,7 +8,8 @@
   <component name="ChangeListManager">
     <list default="true" id="15838f6d-5d70-4ff6-8051-fd89579a3901" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/rafaelpiloto10/warpplugin/managers/WarpManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/rafaelpiloto10/warpplugin/managers/WarpManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/rafaelpiloto10/warpplugin/commands/WarpCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/rafaelpiloto10/warpplugin/commands/WarpCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

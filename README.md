@@ -20,3 +20,12 @@ A custom plugin for teleports
 
 ### Credits:
 Created by [Rafael Piloto](https://rafaelpiloto10.herokuapp.com/)
+
+## TODO:
+  [x] Cannot list warps - Works with multiple warps, remove trailing comma
+  [x] Error when trying to warp into non-existent warp
+  [x] No XP Message
+  [x] Fix message for player warp set
+  [x] No cap on warp set, warp set sometimes gives no message
+  * Must have world warp set before can custom warp ? 
+  

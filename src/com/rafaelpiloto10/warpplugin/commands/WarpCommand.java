@@ -1,5 +1,6 @@
 package com.rafaelpiloto10.warpplugin.commands;
 
+import com.google.common.collect.ObjectArrays;
 import com.rafaelpiloto10.warpplugin.Main;
 import com.rafaelpiloto10.warpplugin.managers.WarpManager;
 import com.rafaelpiloto10.warpplugin.utils.Utils;
@@ -44,13 +45,11 @@ public class WarpCommand implements CommandExecutor {
                         // /warp list
                         String[] world_warps = warpManager.getWarps("world");
                         String[] player_warps = warpManager.getWarps(offlinePlayer);
+                        String[] total_warps = ObjectArrays.concat(world_warps, player_warps, String.class);
 
                         if (world_warps != null && player_warps != null && (world_warps.length > 0 || player_warps.length > 0)) {
                             String listed_warps = "";
-                            for (String warp : world_warps) {
-                                listed_warps += warp + ", ";
-                            }
-                            for (String warp : player_warps) {
+                            for (String warp : total_warps) {
                                 listed_warps += warp + ", ";
                             }
                             player.sendMessage(Utils.chat("&7Warps: &f" + listed_warps.trim().substring(0, listed_warps.length() - 1)));
@@ -104,7 +103,7 @@ public class WarpCommand implements CommandExecutor {
                                 return false;
                             }
                         }
-                        if (warpManager.getWarps(offlinePlayer).length > 1) {
+                        if (warpManager.getWarps(offlinePlayer).length >= 1) {
                             player.sendMessage(Utils.chat("&cOnly one custom warp is allowed for your rank"));
                             return false;
                         }
