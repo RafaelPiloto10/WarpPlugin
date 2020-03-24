@@ -70,10 +70,7 @@ public class WarpManager {
     }
 
     public File getWarpFile(){
-        File dirs = new File("WarpData/");
-        dirs.mkdirs();
-        File warp_file = new File(dirs, "warps.dat");
-        return warp_file;
+        return new File("WarpData/warps.dat");
     }
 
     public void setWarp(OfflinePlayer player, String name, Location warp) {
