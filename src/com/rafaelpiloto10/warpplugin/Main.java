@@ -16,13 +16,12 @@ public class Main extends JavaPlugin {
 
         try {
             warpManager.loadWarpFile();
-            Bukkit.broadcastMessage(Utils.chat("&aSuccessfully &floaded warps"));
         } catch (IOException e) {
-            Bukkit.broadcastMessage(Utils.chat("&cCould not &fload warps"));
+            Bukkit.broadcastMessage(Utils.chat("&cCould not &fload warps - &fIOException"));
             e.printStackTrace();
 
         } catch (ClassNotFoundException e) {
-            Bukkit.broadcastMessage(Utils.chat("&cCould not &fload warps"));
+            Bukkit.broadcastMessage(Utils.chat("&cCould not &fload warps - &fClassNotFoundException"));
             e.printStackTrace();
 
         }

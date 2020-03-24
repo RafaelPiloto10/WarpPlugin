@@ -2,6 +2,7 @@ package com.rafaelpiloto10.warpplugin.managers;
 
 import com.rafaelpiloto10.warpplugin.Main;
 import com.rafaelpiloto10.warpplugin.utils.Utils;
+import com.rafaelpiloto10.warpplugin.utils.Warp;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
@@ -20,7 +21,7 @@ public class WarpManager {
 
     private Main plugin;
 
-    private static HashMap<String, HashMap<String, Location>> warps = new HashMap<String, HashMap<String, Location>>();
+    private static HashMap<String, HashMap<String, Warp>> warps = new HashMap<String, HashMap<String, Warp>>();
 
     public WarpManager(Main plugin) {
         this.plugin = plugin;
@@ -38,7 +39,7 @@ public class WarpManager {
 
         } catch (IOException e) {
             e.printStackTrace();
-            Bukkit.broadcastMessage(Utils.chat("&cCould not save warps!"));
+            Bukkit.broadcastMessage(Utils.chat("&cCould not save warps! - &fIOException"));
         }
 
     }
@@ -55,22 +56,28 @@ public class WarpManager {
             if (!(readObject instanceof HashMap)) {
                 Bukkit.broadcastMessage(Utils.chat("&cCould not load warps - Not in readable format!"));
                 throw new IOException("Data is not a valid HashMap!");
+            } else {
+                Bukkit.broadcastMessage(Utils.chat("&cSuccessfully loaded warps!"));
             }
 
-            warps = (HashMap<String, HashMap<String, Location>>) readObject;
+            warps = (HashMap<String, HashMap<String, Warp>>) readObject;
             for (String key : warps.keySet()) {
                 warps.put(key, warps.get(key));
             }
 
             if (warps == null) {
-                warps = new HashMap<String, HashMap<String, Location>>();
-                warps.put("world", new HashMap<String, Location>());
+                warps = new HashMap<String, HashMap<String, Warp>>();
+                warps.put("world", new HashMap<String, Warp>());
             }
+        } else {
+            Bukkit.broadcastMessage(Utils.chat("&cCould not load warps!"));
         }
     }
 
-    public File getWarpFile(){
-        return new File("WarpData/warps.dat");
+    public File getWarpFile() {
+        File dirs = new File("./WarpPlugin/");
+        dirs.mkdirs();
+        return new File(dirs, "warps.dat");
     }
 
     public void setWarp(OfflinePlayer player, String name, Location warp) {
@@ -78,14 +85,14 @@ public class WarpManager {
     }
 
     public void setWarp(String branch, String name, Location warp) {
-        HashMap<String, Location> playerSavedWarps = warps.get(branch);
+        HashMap<String, Warp> playerSavedWarps = warps.get(branch);
 
         if (playerSavedWarps == null) {
-            warps.put(branch, new HashMap<String, Location>());
+            warps.put(branch, new HashMap<String, Warp>());
             playerSavedWarps = warps.get(branch);
         }
 
-        playerSavedWarps.put(name, warp);
+        playerSavedWarps.put(name, new Warp(branch, name, warp.getWorld().toString(), warp.getBlockX(), warp.getBlockY(), warp.getBlockZ()));
         warps.put(branch, playerSavedWarps);
     }
 
@@ -94,7 +101,7 @@ public class WarpManager {
     }
 
     public boolean removeWarp(String branch, String name) {
-        HashMap<String, Location> playerSavedWarps = warps.get(branch);
+        HashMap<String, Warp> playerSavedWarps = warps.get(branch);
         if (playerSavedWarps != null && playerSavedWarps.get(name) != null) {
             playerSavedWarps.remove(name);
             warps.put(branch, playerSavedWarps);
@@ -109,7 +116,11 @@ public class WarpManager {
     }
 
     public String[] getWarps(String branch) {
-        return warps.get(branch).keySet().toArray(new String[warps.get(branch).keySet().size()]);
+        try {
+            return warps.get(branch).keySet().toArray(new String[warps.get(branch).keySet().size()]);
+        } catch (NullPointerException e){
+            return new String[]{};
+        }
     }
 
     public Location getWarpLocation(OfflinePlayer p, String name) {
@@ -117,7 +128,14 @@ public class WarpManager {
     }
 
     public Location getWarpLocation(String branch, String name) {
-        return warps.get(branch).get(name);
+        try {
+            if (warps.get(branch) == null) {
+                warps.put(branch, new HashMap<String, Warp>());
+            }
+            return warps.get(branch).get(name).warpToLocation();
+        } catch (NullPointerException e){
+            return null;
+        }
     }
 
 

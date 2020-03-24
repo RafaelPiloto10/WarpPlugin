@@ -7,8 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15838f6d-5d70-4ff6-8051-fd89579a3901" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/WarpPlugin_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/WarpPlugin_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/rafaelpiloto10/warpplugin/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/rafaelpiloto10/warpplugin/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/rafaelpiloto10/warpplugin/commands/WarpCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/rafaelpiloto10/warpplugin/commands/WarpCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/rafaelpiloto10/warpplugin/managers/WarpManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/rafaelpiloto10/warpplugin/managers/WarpManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,14 +78,14 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="130" y="180" width="1081" height="735" key="#Project_Structure" timestamp="1584913990940">
+    <state x="130" y="180" width="1081" height="735" key="#Project_Structure" timestamp="1585021796452">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="130" y="180" width="1081" height="735" key="#Project_Structure/0.0.1920.1080@0.0.1920.1080" timestamp="1584913990940" />
-    <state x="327" y="256" key="#com.intellij.ide.util.MemberChooser" timestamp="1584935731186">
+    <state x="130" y="180" width="1081" height="735" key="#Project_Structure/0.0.1920.1080@0.0.1920.1080" timestamp="1585021796452" />
+    <state x="327" y="256" key="#com.intellij.ide.util.MemberChooser" timestamp="1585024063770">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="327" y="256" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1584935731186" />
+    <state x="327" y="256" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1585024063770" />
     <state x="252" y="330" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1584909744525">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

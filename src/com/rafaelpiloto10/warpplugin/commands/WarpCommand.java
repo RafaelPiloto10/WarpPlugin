@@ -31,7 +31,7 @@ public class WarpCommand implements CommandExecutor {
              *
              * Available Commands:
              *  /warp location_name
-             *  /warp (set : (remove/rm) ) location_name
+             *  /warp ((set/set:world) : (remove/rm) ) location_name
              *  /warp list
              *  /warp help
              *
@@ -45,14 +45,14 @@ public class WarpCommand implements CommandExecutor {
                         // /warp list
                         String[] world_warps = warpManager.getWarps("world");
                         String[] player_warps = warpManager.getWarps(offlinePlayer);
-                        String[] total_warps = ObjectArrays.concat(world_warps, player_warps, String.class);
 
                         if (world_warps != null && player_warps != null && (world_warps.length > 0 || player_warps.length > 0)) {
+                            String[] total_warps = ObjectArrays.concat(world_warps, player_warps, String.class);
                             String listed_warps = "";
                             for (String warp : total_warps) {
                                 listed_warps += warp + ", ";
                             }
-                            player.sendMessage(Utils.chat("&7Warps: &f" + listed_warps.trim().substring(0, listed_warps.length() - 1)));
+                            player.sendMessage(Utils.chat("&7Warps: &f" + listed_warps.trim().substring(0, listed_warps.length() - 2)));
                         } else {
                             player.sendMessage(Utils.chat("&cThere are no current warps to list!"));
                         }
@@ -75,9 +75,9 @@ public class WarpCommand implements CommandExecutor {
                         if (warpLocation != null) {
                             if (warpLocation.getWorld() == player.getWorld()) {
                                 if (player.getLevel() >= 1) {
-                                    player.sendMessage(Utils.chat("&aTeleporting to " + strings[0] + "! XP Level charged!"));
+                                    player.sendMessage(Utils.chat("&aTeleporting to " + strings[0] + "! 500 xp charged!"));
                                     player.teleport(warpLocation);
-                                    player.setLevel(player.getLevel() - 1);
+                                    player.setExp(player.getExp() - 500);
                                 } else {
                                     player.sendMessage(Utils.chat("&cOne XP level is required to warp!"));
                                 }
@@ -97,7 +97,7 @@ public class WarpCommand implements CommandExecutor {
                                 return false;
                             }
                         }
-                        for (String cmd : new String[]{"help", "list", "set", "rm", "remove"}) {
+                        for (String cmd : new String[]{"help", "list", "set", "rm", "remove", "set:world", "warp"}) {
                             if (cmd.equalsIgnoreCase(strings[1])) {
                                 player.sendMessage(Utils.chat("&cCannot set warp name - Illegal name"));
                                 return false;
@@ -109,7 +109,7 @@ public class WarpCommand implements CommandExecutor {
                         }
 
                         warpManager.setWarp(offlinePlayer, strings[1], player.getLocation());
-                        player.sendMessage("&aSuccessfully set " + strings[1] + " warp!");
+                        player.sendMessage(Utils.chat("&aSuccessfully set " + strings[1] + " warp!"));
 
                     } else if (strings[0].equalsIgnoreCase("set:world")) {
                         // /warp set:world location_name
@@ -131,6 +131,8 @@ public class WarpCommand implements CommandExecutor {
                             player.sendMessage(Utils.chat("&cCould not remove warp " + strings[1]));
                             return false;
                         }
+                    } else {
+                        player.sendMessage(Utils.chat("&cCould not parse warp - do &6/warp help"));
                     }
                 } else {
                     // Not correct command syntax
