@@ -57,7 +57,7 @@ public class WarpManager {
                 Bukkit.broadcastMessage(Utils.chat("&cCould not load warps - Not in readable format!"));
                 throw new IOException("Data is not a valid HashMap!");
             } else {
-                Bukkit.broadcastMessage(Utils.chat("&cSuccessfully loaded warps!"));
+                Bukkit.broadcastMessage(Utils.chat("&aSuccessfully loaded warps!"));
             }
 
             warps = (HashMap<String, HashMap<String, Warp>>) readObject;
@@ -92,7 +92,7 @@ public class WarpManager {
             playerSavedWarps = warps.get(branch);
         }
 
-        playerSavedWarps.put(name, new Warp(branch, name, warp.getWorld().toString(), warp.getBlockX(), warp.getBlockY(), warp.getBlockZ()));
+        playerSavedWarps.put(name, new Warp(branch, name, warp.getWorld().getName(), warp.getBlockX(), warp.getBlockY(), warp.getBlockZ()));
         warps.put(branch, playerSavedWarps);
     }
 

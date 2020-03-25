@@ -21,19 +21,15 @@ public class Warp implements Serializable {
         this.z = z;
     }
 
-    public Warp(String owner, String name, int x, int y, int z){
-        this(owner, name, "world", x, y, z);
-    }
-
     public Location warpToLocation(){
-        return new Location(Bukkit.getServer().getWorld("world"), x, y, z);
+        return new Location(Bukkit.getServer().getWorld(world), x, y, z);
     }
 
     public static Warp locationToWarp(String owner, String name, Location location){
         int x = location.getBlockX();
         int y = location.getBlockY();
         int z = location.getBlockZ();
-        String world = location.getWorld().toString();
+        String world = location.getWorld().getName();
         return new Warp(owner, name, world, x, y, z);
     }
 

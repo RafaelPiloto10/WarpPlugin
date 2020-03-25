@@ -12,6 +12,7 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        saveDefaultConfig();
         WarpManager warpManager = new WarpManager(this);
 
         try {

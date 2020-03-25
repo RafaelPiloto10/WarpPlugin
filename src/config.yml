@@ -1,0 +1,35 @@
+# /warp set messages:
+set_new_warp: "&aSuccessfully set <warp> warp!"
+set_new_world_warp: "&aSuccessfully set <warp> as world warp!"
+warp_exists: "&cWarp <warp> already exists!"
+illegal_name: "&c<warp> cannot be set as a warp name - &fIllegal name!"
+warp_limit_error: "&cOnly <amount> custom warps are allowed for your rank!"
+world_warp_announcement: "&f[&aWarp Announcement&f] &6New world warp set: &a<warp>"
+illegal_names: "help,list,set,rm,remove,set:world,warp"
+
+# /warp remove messages:
+remove_success: "&aSuccessfully removed warp <warp>"
+remove_error: "&cCould not remove warp <warp>"
+
+# /warp <location> messages:
+warp_success: "&aTeleporting to <warp>! 1 xp level charged!"
+warp_error_xp: "&c<xp_cost> xp level is required to warp!"
+warp_error_interdimension: "&cInterdimensional travel is not allowed!"
+warp_not_exist: "&cThe <warp> warp does not exist!"
+
+# /warp help message:
+help: "&6Warp Command Help\n\n/warp <name> &e- Warp to a location\n&6/warp <set/set:world> <name> &e- Set current location as a warp with custom name\n&6/warp <remove:rm> <name> &e- Remove the warp location\n&6/warp list &e- List the allowed warps\n&6/warp help &e- Get help with the warp commands\n"
+
+# /warp list message:
+no_warps: "&cThere are no current warps to list!"
+
+# Error
+no_parse: "no_parse: &cCould not parse warp - do &6/warp help"
+no_perms: "&cYou do not have permissions to run this command!"
+
+# Configs:
+world_name: "world"
+allowed_interdimensional_travel: false
+player_warp_limit: 1
+warp_xp_level_cost: 1
+
