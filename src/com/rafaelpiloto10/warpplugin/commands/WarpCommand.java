@@ -176,6 +176,6 @@ public class WarpCommand implements CommandExecutor, TabCompleter {
                 }
             }
         }
-        return Arrays.asList(new String[]{Integer.toString(strings.length)});
+        return null;
     }
 }

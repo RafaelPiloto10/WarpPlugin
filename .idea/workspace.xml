@@ -7,10 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15838f6d-5d70-4ff6-8051-fd89579a3901" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/WarpPlugin_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/WarpPlugin_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WarpPlugin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/WarpPlugin.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/rafaelpiloto10/warpplugin/commands/WarpCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/rafaelpiloto10/warpplugin/commands/WarpCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
