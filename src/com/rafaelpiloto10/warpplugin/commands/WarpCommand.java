@@ -7,12 +7,13 @@ import com.rafaelpiloto10.warpplugin.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
+import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 
-public class WarpCommand implements CommandExecutor {
+import java.util.Arrays;
+import java.util.List;
+
+public class WarpCommand implements CommandExecutor, TabCompleter {
 
     private WarpManager warpManager;
     private Main plugin;
@@ -20,6 +21,7 @@ public class WarpCommand implements CommandExecutor {
     public WarpCommand(Main plugin) {
         this.plugin = plugin;
         this.plugin.getCommand("warp").setExecutor(this);
+        this.plugin.getCommand("warp").setTabCompleter(this);
         warpManager = new WarpManager(this.plugin);
     }
 
@@ -81,7 +83,7 @@ public class WarpCommand implements CommandExecutor {
                                     player.sendMessage(Utils.chat(plugin.getConfig().getString("warp_error_interdimension")));
                                 }
 
-                            } catch (NullPointerException e){
+                            } catch (NullPointerException e) {
                                 e.printStackTrace();
                                 player.sendMessage(Utils.chat("&cThe location is returning a null world!"));
                             }
@@ -142,5 +144,38 @@ public class WarpCommand implements CommandExecutor {
             }
         }
         return false;
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
+        Player p = (Player) commandSender;
+        OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(p.getUniqueId());
+        if (strings.length == 1) {
+            String[] world_warps = warpManager.getWarps(plugin.getConfig().getString("world_name"));
+            String[] player_warps = warpManager.getWarps(offlinePlayer);
+
+            if (world_warps != null && player_warps != null && (world_warps.length > 0 || player_warps.length > 0)) {
+                String[] total_warps = ObjectArrays.concat(world_warps, player_warps, String.class);
+                String[] help_warps = new String[]{"help", "list", "set", "remove"};
+                return Arrays.asList(ObjectArrays.concat(total_warps, help_warps, String.class));
+            } else {
+                return Arrays.asList(new String[]{"help", "list", "set", "remove"});
+            }
+        } else if (strings.length == 2) {
+            if (p.hasPermission("warpplugin.set_world")) {
+                String[] world_warps = warpManager.getWarps(plugin.getConfig().getString("world_name"));
+                String[] player_warps = warpManager.getWarps(offlinePlayer);
+
+                if (world_warps != null && player_warps != null && (world_warps.length > 0 || player_warps.length > 0)) {
+                    return Arrays.asList(ObjectArrays.concat(world_warps, player_warps, String.class));
+                }
+            } else {
+                String[] player_warps = warpManager.getWarps(offlinePlayer);
+                if (player_warps != null && player_warps.length > 0) {
+                    return Arrays.asList(player_warps);
+                }
+            }
+        }
+        return Arrays.asList(new String[]{Integer.toString(strings.length)});
     }
 }

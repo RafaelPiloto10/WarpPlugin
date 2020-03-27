@@ -17,10 +17,6 @@ A custom plugin for teleports
 * `/warp list` - List the warps accessible by the player
 * `/warp help` - To learn more about each command
 
-## Wish-List:
-* Allow dynamic choosing in player custom warp limit
-* Allow dynamic choosing for xp cost
-
 ### Credits:
 Created by [Rafael Piloto](https://rafaelpiloto10.herokuapp.com/)
 
